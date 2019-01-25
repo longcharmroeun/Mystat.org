@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JsonObj\Attendance.cs" />
     <Compile Include="JsonObj\Authentication.cs" />
     <Compile Include="JsonObj\LeaderGroup.cs" />
     <Compile Include="JsonObj\Leader_Stream.cs" />

@@ -22,6 +22,7 @@ namespace Mystat
         private List<Schedule> schedules;
         private List<Schedule> Todays;
         private string schedulURL = "https://msapi.itstep.org/api/v1/schedule/operations/get-month?date_filter=";
+        private BindingList<Attendance> attendances;
         public MystatForm(Token token)
         {
             InitializeComponent();
@@ -36,6 +37,7 @@ namespace Mystat
             schedules = new List<Schedule>();
             Todays = new List<Schedule>();
             Month.Value = DateTime.Now.Month;
+            attendances = new BindingList<Attendance>();
 
             this.WindowState = FormWindowState.Maximized;
 
@@ -52,6 +54,10 @@ namespace Mystat
             schedules = await Mystat.GetJson<List<Schedule>>(Token, new Uri($"{schedulURL}{DateTime.Now.Year.ToString("D4")}-{DateTime.Now.Month.ToString("D2")}-01"),
                 schedules);
             ThreadPool.QueueUserWorkItem(LoadTodaySchedule);
+
+            attendances = await Mystat.GetJson<BindingList<Attendance>>(Token, new Uri("https://msapi.itstep.org/api/v1/dashboard/chart/attendance"),
+                attendances);
+            ListboxAttendance.DataSource = attendances;
         }
 
         private void LoadSchedules()

@@ -69,6 +69,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.Month = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
+            this.ListboxAttendance = new System.Windows.Forms.ListBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Profile)).BeginInit();
             this.panel3.SuspendLayout();
@@ -239,9 +241,11 @@
             this.LeaderList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.LeaderList.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LeaderList.FormattingEnabled = true;
+            this.LeaderList.HorizontalScrollbar = true;
             this.LeaderList.ItemHeight = 25;
             this.LeaderList.Location = new System.Drawing.Point(15, 172);
             this.LeaderList.Name = "LeaderList";
+            this.LeaderList.ScrollAlwaysVisible = true;
             this.LeaderList.Size = new System.Drawing.Size(281, 300);
             this.LeaderList.TabIndex = 3;
             // 
@@ -491,12 +495,40 @@
             this.label9.TabIndex = 11;
             this.label9.Text = "Month";
             // 
+            // ListboxAttendance
+            // 
+            this.ListboxAttendance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.ListboxAttendance.BackColor = System.Drawing.SystemColors.Window;
+            this.ListboxAttendance.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ListboxAttendance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListboxAttendance.FormattingEnabled = true;
+            this.ListboxAttendance.HorizontalScrollbar = true;
+            this.ListboxAttendance.ItemHeight = 20;
+            this.ListboxAttendance.Location = new System.Drawing.Point(12, 507);
+            this.ListboxAttendance.Name = "ListboxAttendance";
+            this.ListboxAttendance.ScrollAlwaysVisible = true;
+            this.ListboxAttendance.Size = new System.Drawing.Size(284, 200);
+            this.ListboxAttendance.TabIndex = 12;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(7, 479);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(107, 25);
+            this.label10.TabIndex = 13;
+            this.label10.Text = "Atendance";
+            // 
             // MystatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1280, 730);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.ListboxAttendance);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.Month);
             this.Controls.Add(this.label8);
@@ -566,5 +598,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.NumericUpDown Month;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ListBox ListboxAttendance;
+        private System.Windows.Forms.Label label10;
     }
 }
