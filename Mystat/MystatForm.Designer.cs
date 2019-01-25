@@ -42,6 +42,9 @@
             this.Fullname = new System.Windows.Forms.Label();
             this.Profile = new System.Windows.Forms.PictureBox();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.label1 = new System.Windows.Forms.Label();
+            this.LeaderList = new System.Windows.Forms.ListBox();
+            this.leaderButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Profile)).BeginInit();
             this.SuspendLayout();
@@ -194,16 +197,53 @@
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(10, 144);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(212, 25);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "BOARD OF LEADERS";
+            // 
+            // LeaderList
+            // 
+            this.LeaderList.BackColor = System.Drawing.SystemColors.Window;
+            this.LeaderList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LeaderList.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LeaderList.FormattingEnabled = true;
+            this.LeaderList.ItemHeight = 25;
+            this.LeaderList.Location = new System.Drawing.Point(15, 172);
+            this.LeaderList.Name = "LeaderList";
+            this.LeaderList.Size = new System.Drawing.Size(281, 300);
+            this.LeaderList.TabIndex = 3;
+            // 
+            // leaderButton
+            // 
+            this.leaderButton.Location = new System.Drawing.Point(221, 144);
+            this.leaderButton.Name = "leaderButton";
+            this.leaderButton.Size = new System.Drawing.Size(75, 23);
+            this.leaderButton.TabIndex = 4;
+            this.leaderButton.Text = "Group";
+            this.leaderButton.UseVisualStyleBackColor = true;
+            this.leaderButton.Click += new System.EventHandler(this.leaderButton_Click);
+            // 
             // MystatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1147, 730);
+            this.Controls.Add(this.leaderButton);
+            this.Controls.Add(this.LeaderList);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip2);
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MystatForm";
-            this.Text = "MystatForm";
+            this.Text = "Mystat.org";
             this.Load += new System.EventHandler(this.MystatForm_LoadAsync);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -227,5 +267,8 @@
         private System.Windows.Forms.Label Badges;
         private System.Windows.Forms.Label Coin;
         private System.Windows.Forms.Button logout;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox LeaderList;
+        private System.Windows.Forms.Button leaderButton;
     }
 }
