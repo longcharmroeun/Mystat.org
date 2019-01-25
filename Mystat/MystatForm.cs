@@ -45,7 +45,7 @@ namespace Mystat
             {
                 str[0] = $"{item.position}. {item.full_name}";
                 str[1] = item.amount.ToString();
-                leadergrouplistview.Items.Add(new ListViewItem(str));
+                //leadergrouplistview.Items.Add(new ListViewItem(str));
             }
         }
 
@@ -79,6 +79,12 @@ namespace Mystat
         private void Web_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
             Profile.Image = Image.FromFile("User");
+        }
+
+        private void logout_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

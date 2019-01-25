@@ -11,3 +11,14 @@ D:\New folder\Mystate\Mystat\Mystat\bin\Debug\Newtonsoft.Json.dll
 D:\New folder\Mystate\Mystat\Mystat\obj\Debug\Mystat.csproj.CopyComplete
 D:\New folder\Mystate\Mystat\Mystat\obj\Debug\Mystat.LoginForm.resources
 D:\New folder\Mystate\Mystat\Mystat\obj\Debug\Mystat.MystatForm.resources
+D:\New folder\Mystat.org\Mystat\bin\Debug\Mystat.exe.config
+D:\New folder\Mystat.org\Mystat\bin\Debug\Mystat.exe
+D:\New folder\Mystat.org\Mystat\bin\Debug\Mystat.pdb
+D:\New folder\Mystat.org\Mystat\obj\Debug\Mystat.LoginForm.resources
+D:\New folder\Mystat.org\Mystat\obj\Debug\Mystat.MystatForm.resources
+D:\New folder\Mystat.org\Mystat\obj\Debug\Mystat.Properties.Resources.resources
+D:\New folder\Mystat.org\Mystat\obj\Debug\Mystat.csproj.GenerateResource.cache
+D:\New folder\Mystat.org\Mystat\obj\Debug\Mystat.csproj.CoreCompileInputs.cache
+D:\New folder\Mystat.org\Mystat\obj\Debug\Mystat.csproj.CopyComplete
+D:\New folder\Mystat.org\Mystat\obj\Debug\Mystat.exe
+D:\New folder\Mystat.org\Mystat\obj\Debug\Mystat.pdb
