@@ -67,6 +67,7 @@
     <Compile Include="JsonObj\Authentication.cs" />
     <Compile Include="JsonObj\LeaderGroup.cs" />
     <Compile Include="JsonObj\Leader_Stream.cs" />
+    <Compile Include="JsonObj\Schedule.cs" />
     <Compile Include="JsonObj\Token.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>

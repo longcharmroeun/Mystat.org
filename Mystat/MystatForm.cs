@@ -19,6 +19,8 @@ namespace Mystat
         private UserInfo UserInfo;
         private BindingList<LeaderGroup> leaderGroups;
         private BindingList<Leader_Stream> leader_Streams;
+        private List<Schedule> schedules;
+        private List<Schedule> Todays;
         public MystatForm(Token token)
         {
             InitializeComponent();
@@ -30,6 +32,9 @@ namespace Mystat
             UserInfo = new UserInfo();
             leaderGroups = new BindingList<LeaderGroup>();
             leader_Streams = new BindingList<Leader_Stream>();
+            schedules = new List<Schedule>();
+            Todays = new List<Schedule>();
+            string schedulURL = "https://msapi.itstep.org/api/v1/schedule/operations/get-month?date_filter=";
 
             this.WindowState = FormWindowState.Maximized;
 
@@ -42,6 +47,38 @@ namespace Mystat
 
             leader_Streams = await Mystat.GetJson<BindingList<Leader_Stream>>(Token, new Uri("https://msapi.itstep.org/api/v1/dashboard/progress/leader-stream"),
                 leader_Streams);
+
+            schedules = await Mystat.GetJson<List<Schedule>>(Token, new Uri($"{schedulURL}{DateTime.Now.Year.ToString("D4")}-{DateTime.Now.Month.ToString("D2")}-01"),
+                schedules);
+            ThreadPool.QueueUserWorkItem(LoadToday);
+        }
+
+        private void LoadToday(object obj)
+        {
+            int Counter = 0;
+            foreach (var item in schedules)
+            {
+                if (item.date == $"{DateTime.Now.Year.ToString("D4")}-{DateTime.Now.Month.ToString("D2")}-{DateTime.Now.Date.ToString("D2")}") 
+                {
+                    Todays.Add(item);
+                    if (Counter == 0)
+                    {
+                        this.Invoke(new Action(() =>
+                        {
+                            subject_nameLabel.Text = item.subject_name;
+                            teacher_nameLabel.Text = item.teacher_name;
+                            start_atLabel.Text = item.started_at;
+                            finished_atLabel.Text = item.finished_at;
+                            lessionButton.Enabled = true;
+                        }));
+                    }
+                    Counter++;
+                }
+            }
+            if (!lessionButton.Enabled)
+            {
+                this.Invoke(new Action(() => noclassLabel.Text = "No class"));
+            }
         }
 
         private void LoadUser(object obj)
@@ -96,6 +133,26 @@ namespace Mystat
             {
                 LeaderList.DataSource = leaderGroups;
                 leaderButton.Text = "Group";
+            }
+        }
+
+        private void lessionButton_Click(object sender, EventArgs e)
+        {
+            if(lessionButton.Text == "Lession 0")
+            {
+                subject_nameLabel.Text = Todays.ElementAt(1).subject_name;
+                teacher_nameLabel.Text = Todays.ElementAt(1).teacher_name;
+                start_atLabel.Text = Todays.ElementAt(1).started_at;
+                finished_atLabel.Text = Todays.ElementAt(1).finished_at;
+                lessionButton.Text = "Lession 1";
+            }
+            else
+            {
+                subject_nameLabel.Text = Todays.ElementAt(0).subject_name;
+                teacher_nameLabel.Text = Todays.ElementAt(0).teacher_name;
+                start_atLabel.Text = Todays.ElementAt(0).started_at;
+                finished_atLabel.Text = Todays.ElementAt(0).finished_at;
+                lessionButton.Text = "Lession 0";
             }
         }
     }
