@@ -21,6 +21,7 @@ namespace Mystat
         private BindingList<Leader_Stream> leader_Streams;
         private List<Schedule> schedules;
         private List<Schedule> Todays;
+        private string schedulURL = "https://msapi.itstep.org/api/v1/schedule/operations/get-month?date_filter=";
         public MystatForm(Token token)
         {
             InitializeComponent();
@@ -34,7 +35,7 @@ namespace Mystat
             leader_Streams = new BindingList<Leader_Stream>();
             schedules = new List<Schedule>();
             Todays = new List<Schedule>();
-            string schedulURL = "https://msapi.itstep.org/api/v1/schedule/operations/get-month?date_filter=";
+            Month.Value = DateTime.Now.Month;
 
             this.WindowState = FormWindowState.Maximized;
 
@@ -50,12 +51,30 @@ namespace Mystat
 
             schedules = await Mystat.GetJson<List<Schedule>>(Token, new Uri($"{schedulURL}{DateTime.Now.Year.ToString("D4")}-{DateTime.Now.Month.ToString("D2")}-01"),
                 schedules);
-            ThreadPool.QueueUserWorkItem(LoadToday);
+            ThreadPool.QueueUserWorkItem(LoadTodaySchedule);
         }
 
-        private void LoadToday(object obj)
+        private void LoadSchedules()
+        {
+            listViewSchedule.Items.Clear();
+            string[] str = new string[7];
+            foreach (var item in schedules)
+            {
+                str[0] = item.date;
+                str[1] = $"Lession {item.lesson}";
+                str[2] = item.started_at;
+                str[3] = item.finished_at;
+                str[4] = item.teacher_name;
+                str[5] = item.subject_name;
+                str[6] = item.room_name;
+                listViewSchedule.Items.Add(new ListViewItem(str));
+            }
+        }
+
+        private void LoadTodaySchedule(object obj)
         {
             int Counter = 0;
+            string[] str = new string[7];
             foreach (var item in schedules)
             {
                 if (item.date == $"{DateTime.Now.Year.ToString("D4")}-{DateTime.Now.Month.ToString("D2")}-{DateTime.Now.Date.ToString("D2")}") 
@@ -74,6 +93,16 @@ namespace Mystat
                     }
                     Counter++;
                 }
+
+                str[0] = item.date;
+                str[1] = $"Lession {item.lesson}";
+                str[2] = item.started_at;
+                str[3] = item.finished_at;
+                str[4] = item.teacher_name;
+                str[5] = item.subject_name;
+                str[6] = item.room_name;
+                this.Invoke(new Action(() => listViewSchedule.Items.Add(new ListViewItem(str))));
+
             }
             if (!lessionButton.Enabled)
             {
@@ -154,6 +183,16 @@ namespace Mystat
                 finished_atLabel.Text = Todays.ElementAt(0).finished_at;
                 lessionButton.Text = "Lession 0";
             }
+        }
+
+        private async void Month_ValueChangedAsync(object sender, EventArgs e)
+        {
+            if (Month.Value > 12 || Month.Value == 0) Month.Value = 1;
+            Month.Enabled = false;
+            schedules = await Mystat.GetJson<List<Schedule>>(Token, new Uri($"{schedulURL}{DateTime.Now.Year.ToString("D4")}-{Month.Value}-01"),
+                schedules);
+            LoadSchedules();
+            Month.Enabled = true;
         }
     }
 }
