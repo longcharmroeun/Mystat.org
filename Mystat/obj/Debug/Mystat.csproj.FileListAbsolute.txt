@@ -22,4 +22,5 @@ D:\New folder\Mystat.org\Mystat\obj\Debug\Mystat.csproj.CoreCompileInputs.cache
 D:\New folder\Mystat.org\Mystat\obj\Debug\Mystat.csproj.CopyComplete
 D:\New folder\Mystat.org\Mystat\obj\Debug\Mystat.exe
 D:\New folder\Mystat.org\Mystat\obj\Debug\Mystat.pdb
+D:\New folder\Mystat.org\Mystat\obj\Debug\Mystat.ProfileViewFrom.resources
 D:\New folder\Mystat.org\Mystat\obj\Debug\Mystat.csprojAssemblyReference.cache

@@ -76,12 +76,15 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.LeaderLisetMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Profile)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Month)).BeginInit();
             this.panel4.SuspendLayout();
+            this.LeaderLisetMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -266,6 +269,7 @@
             // 
             this.LeaderList.BackColor = System.Drawing.SystemColors.Window;
             this.LeaderList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LeaderList.ContextMenuStrip = this.LeaderLisetMenu;
             this.LeaderList.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LeaderList.FormattingEnabled = true;
             this.LeaderList.HorizontalScrollbar = true;
@@ -577,6 +581,21 @@
             this.label12.TabIndex = 15;
             this.label12.Text = "Homework";
             // 
+            // LeaderLisetMenu
+            // 
+            this.LeaderLisetMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewToolStripMenuItem});
+            this.LeaderLisetMenu.Name = "LeaderLisetMenu";
+            this.LeaderLisetMenu.Size = new System.Drawing.Size(181, 48);
+            this.LeaderLisetMenu.Opening += new System.ComponentModel.CancelEventHandler(this.LeaderLisetMenu_Opening);
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewToolStripMenuItem.Text = "View";
+            this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
+            // 
             // MystatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -615,6 +634,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Month)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.LeaderLisetMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -668,5 +688,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ContextMenuStrip LeaderLisetMenu;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
     }
 }

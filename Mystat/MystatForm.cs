@@ -39,7 +39,6 @@ namespace Mystat
             Todays = new List<Schedule>();
             Month.Value = DateTime.Now.Month;
             attendances = new BindingList<Attendance>();
-
             this.WindowState = FormWindowState.Maximized;
 
             UserInfo = await Mystat.GetJson<UserInfo>(Token, new Uri("https://msapi.itstep.org/api/v1/settings/user-info"), UserInfo);
@@ -212,6 +211,33 @@ namespace Mystat
             {
                 refresh_Token.refresh_token = Token.refresh_token;
                 File.WriteAllText("../../JsonFile/Refresh_Token.json", Newtonsoft.Json.JsonConvert.SerializeObject(Token));
+            }
+        }
+
+        private void LeaderLisetMenu_Opening(object sender, CancelEventArgs e)
+        {
+            if (LeaderList.SelectedIndex < 0)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void viewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (leaderButton.Text == "Group")
+            {
+                new ProfileViewFrom(leaderGroups.ElementAt(LeaderList.SelectedIndex).photo_path,
+                leaderGroups.ElementAt(LeaderList.SelectedIndex).full_name,
+                leaderGroups.ElementAt(LeaderList.SelectedIndex).position.ToString(),
+                leaderGroups.ElementAt(LeaderList.SelectedIndex).id.ToString(),
+                leaderGroups.ElementAt(LeaderList.SelectedIndex).amount.ToString()).ShowDialog();
+            }
+            else
+            {
+                new ProfileViewFrom(leader_Streams.ElementAt(LeaderList.SelectedIndex).photo_path,
+                leader_Streams.ElementAt(LeaderList.SelectedIndex).full_name,
+                leader_Streams.ElementAt(LeaderList.SelectedIndex).position.ToString(),
+                leader_Streams.ElementAt(LeaderList.SelectedIndex).id.ToString()).ShowDialog();
             }
         }
     }
