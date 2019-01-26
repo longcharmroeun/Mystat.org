@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MystatForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
             this.logout = new System.Windows.Forms.Button();
             this.Badges = new System.Windows.Forms.Label();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
@@ -41,7 +42,8 @@
             this.GroupName = new System.Windows.Forms.Label();
             this.Fullname = new System.Windows.Forms.Label();
             this.Profile = new System.Windows.Forms.PictureBox();
-            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.LeaderList = new System.Windows.Forms.ListBox();
             this.leaderButton = new System.Windows.Forms.Button();
@@ -71,10 +73,15 @@
             this.label9 = new System.Windows.Forms.Label();
             this.ListboxAttendance = new System.Windows.Forms.ListBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Profile)).BeginInit();
+            this.menuStrip.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Month)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -83,6 +90,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.SystemColors.Window;
+            this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.logout);
             this.panel1.Controls.Add(this.Badges);
             this.panel1.Controls.Add(this.Coin);
@@ -96,6 +104,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1280, 100);
             this.panel1.TabIndex = 0;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(1036, 76);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(40, 13);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "Logout";
             // 
             // logout
             // 
@@ -217,13 +234,23 @@
             this.Profile.TabIndex = 0;
             this.Profile.TabStop = false;
             // 
-            // menuStrip2
+            // menuStrip
             // 
-            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1280, 24);
-            this.menuStrip2.TabIndex = 1;
-            this.menuStrip2.Text = "menuStrip2";
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(1280, 24);
+            this.menuStrip.TabIndex = 1;
+            this.menuStrip.Text = "MenuStrip";
+            // 
+            // mainToolStripMenuItem
+            // 
+            this.mainToolStripMenuItem.Enabled = false;
+            this.mainToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
+            this.mainToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.mainToolStripMenuItem.Text = "Main";
             // 
             // label1
             // 
@@ -501,14 +528,14 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.ListboxAttendance.BackColor = System.Drawing.SystemColors.Window;
             this.ListboxAttendance.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ListboxAttendance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListboxAttendance.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListboxAttendance.FormattingEnabled = true;
             this.ListboxAttendance.HorizontalScrollbar = true;
-            this.ListboxAttendance.ItemHeight = 20;
+            this.ListboxAttendance.ItemHeight = 16;
             this.ListboxAttendance.Location = new System.Drawing.Point(12, 507);
             this.ListboxAttendance.Name = "ListboxAttendance";
             this.ListboxAttendance.ScrollAlwaysVisible = true;
-            this.ListboxAttendance.Size = new System.Drawing.Size(284, 200);
+            this.ListboxAttendance.Size = new System.Drawing.Size(284, 192);
             this.ListboxAttendance.TabIndex = 12;
             // 
             // label10
@@ -521,12 +548,43 @@
             this.label10.TabIndex = 13;
             this.label10.Text = "Atendance";
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.SystemColors.Window;
+            this.panel4.Controls.Add(this.label13);
+            this.panel4.Location = new System.Drawing.Point(357, 443);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(310, 268);
+            this.panel4.TabIndex = 14;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(68, 109);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(138, 25);
+            this.label13.TabIndex = 16;
+            this.label13.Text = "Coming Soon!";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(360, 415);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(105, 25);
+            this.label12.TabIndex = 15;
+            this.label12.Text = "Homework";
+            // 
             // MystatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1280, 730);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.ListboxAttendance);
             this.Controls.Add(this.label9);
@@ -540,18 +598,23 @@
             this.Controls.Add(this.LeaderList);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.menuStrip2);
+            this.Controls.Add(this.menuStrip);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MystatForm";
             this.Text = "Mystat.org";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MystatForm_FormClosing);
             this.Load += new System.EventHandler(this.MystatForm_LoadAsync);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Profile)).EndInit();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Month)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -565,7 +628,7 @@
         private System.Windows.Forms.Label GroupName;
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.Label Point;
-        private System.Windows.Forms.MenuStrip menuStrip2;
+        private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label Crytal;
         private System.Windows.Forms.Label Badges;
@@ -600,5 +663,10 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ListBox ListboxAttendance;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ToolStripMenuItem mainToolStripMenuItem;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
     }
 }

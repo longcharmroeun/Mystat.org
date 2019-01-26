@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -123,8 +124,8 @@ namespace Mystat
                 using (WebClient web = new WebClient())
                 {
                     Properties.Settings.Default.Profile = UserInfo.photo;
-                    web.DownloadFileAsync(new Uri(UserInfo.photo), "User");
-                    web.DownloadFileCompleted += Web_DownloadFileCompleted;
+                    web.DownloadDataAsync(new Uri(UserInfo.photo));
+                    web.DownloadDataCompleted += Web_DownloadDataCompleted;
                 }
             }
             else
@@ -146,9 +147,12 @@ namespace Mystat
             }));
         }
 
-        private void Web_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+        private void Web_DownloadDataCompleted(object sender, DownloadDataCompletedEventArgs e)
         {
-            Profile.Image = Image.FromFile("User");
+            using (MemoryStream memoryStream = new MemoryStream(e.Result))
+            {
+                Profile.Image = Image.FromStream(memoryStream);
+            }
         }
 
         private void logout_Click(object sender, EventArgs e)
@@ -199,6 +203,16 @@ namespace Mystat
                 schedules);
             LoadSchedules();
             Month.Enabled = true;
+        }
+
+        private void MystatForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.Save();
+            using (Refresh_Token refresh_Token = new Refresh_Token())
+            {
+                refresh_Token.refresh_token = Token.refresh_token;
+                File.WriteAllText("../../JsonFile/Refresh_Token.json", Newtonsoft.Json.JsonConvert.SerializeObject(Token));
+            }
         }
     }
 }

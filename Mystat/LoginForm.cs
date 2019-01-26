@@ -30,10 +30,10 @@ namespace Mystat
         {
             try
             {
-                Mystat.Authorization(new Uri("https://msapi.itstep.org/api/v1/auth/login"), ref Token, "../../JsonFile/Auth.json");
+                Mystat.Authorization(new Uri("https://msapi.itstep.org/api/v1/auth/refresh"), ref Token, "../../JsonFile/Refresh_Token.json");
                 MystatForm = new MystatForm(Token);
                 MystatForm.ShowDialog();
-                if(MystatForm.DialogResult == DialogResult.OK)
+                if (MystatForm.DialogResult == DialogResult.OK)
                 {
                     pictureBox1.BackColor = Color.Transparent;
                     Authentication = Newtonsoft.Json.JsonConvert.DeserializeObject<Authentication>(
@@ -45,12 +45,30 @@ namespace Mystat
             }
             catch (System.Net.WebException)
             {
-                pictureBox1.BackColor = Color.Transparent;
-                Authentication = Newtonsoft.Json.JsonConvert.DeserializeObject<Authentication>(
-                    File.ReadAllText("../../JsonFile/Auth.json"));
-                Login.Text = Authentication.username;
-                Passworld.Text = Authentication.password;
-            }
+                try
+                {
+                    Mystat.Authorization(new Uri("https://msapi.itstep.org/api/v1/auth/login"), ref Token, "../../JsonFile/Auth.json");
+                    MystatForm = new MystatForm(Token);
+                    MystatForm.ShowDialog();
+                    if (MystatForm.DialogResult == DialogResult.OK)
+                    {
+                        pictureBox1.BackColor = Color.Transparent;
+                        Authentication = Newtonsoft.Json.JsonConvert.DeserializeObject<Authentication>(
+                            File.ReadAllText("../../JsonFile/Auth.json"));
+                        Login.Text = Authentication.username;
+                        Passworld.Text = Authentication.password;
+                    }
+                    else this.Close();
+                }
+                catch (System.Net.WebException)
+                {
+                    pictureBox1.BackColor = Color.Transparent;
+                    Authentication = Newtonsoft.Json.JsonConvert.DeserializeObject<Authentication>(
+                        File.ReadAllText("../../JsonFile/Auth.json"));
+                    Login.Text = Authentication.username;
+                    Passworld.Text = Authentication.password;
+                }
+            }        
         }
 
         private void button1_Click(object sender, EventArgs e)
