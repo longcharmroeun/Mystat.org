@@ -24,11 +24,13 @@ namespace Mystat
         private List<Schedule> Todays;
         private string schedulURL = "https://msapi.itstep.org/api/v1/schedule/operations/get-month?date_filter=";
         private BindingList<Attendance> attendances;
+        private Mystat Mystat;
 
         public MystatForm(Token token)
         {
             InitializeComponent();
             this.Token = token;
+            Mystat = new Mystat();
         }
 
         private async void MystatForm_LoadAsync(object sender, EventArgs e)

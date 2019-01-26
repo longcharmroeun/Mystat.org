@@ -17,19 +17,40 @@ namespace Mystat
     {
         private TK.Token Token;
         private List<Student_Exam> student_Exams;
+        private Mystat Mystat;
 
         public ProgressForm(TK.Token token)
         {
             InitializeComponent();
             Token = token;
+            Mystat = new Mystat();
         }
 
         private async void ProgressForm_LoadAsync(object sender, EventArgs e)
         {
             student_Exams = new List<Student_Exam>();
+            try
+            {
+                await LoadDataAsync();
+            }
+            catch (System.Net.WebException)
+            {
+                try
+                {
+                    Mystat.Refresh(ref Token);
+                    await LoadDataAsync();
+                }
+                catch (System.Net.WebException)
+                {
+                    Mystat.Authorization(new Uri("https://msapi.itstep.org/api/v1/auth/refresh"), ref Token, "../../JsonFile/Refresh_Token.json");
+                }
+            }
+        }
 
+        private async Task LoadDataAsync()
+        {
             student_Exams = await Mystat.GetJson<List<Student_Exam>>(Token, new Uri("https://msapi.itstep.org/api/v1/progress/operations/student-exams"),
-                student_Exams);
+                    student_Exams);
 
             ThreadPool.QueueUserWorkItem(LoadStudent_Exam);
         }

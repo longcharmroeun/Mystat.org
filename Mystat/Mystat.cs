@@ -9,7 +9,7 @@ using Mystat.JsonObj;
 
 namespace Mystat
 {
-    static class Mystat
+    class Mystat
     {
         /// <summary>
         /// Get Token
@@ -17,7 +17,7 @@ namespace Mystat
         /// <param name="uri">URL</param>
         /// <param name="token">token class</param>
         /// <param name="PostData">send json to server</param>
-        public static void Authorization(Uri uri, ref Token token, string PostData)
+        public void Authorization(Uri uri, ref Token token, string PostData)
         {
             HttpWebRequest webRequest = WebRequest.CreateHttp(uri);
             webRequest.Method = "POST";
@@ -44,7 +44,7 @@ namespace Mystat
         /// <param name="token">Token for url</param>
         /// <param name="uri">url</param>
         /// <param name="obj">object name</param>
-        public static async Task<T> GetJson<T>(Token token, Uri uri, T obj)
+        public async Task<T> GetJson<T>(Token token, Uri uri, T obj)
         {
             HttpWebRequest webRequest = WebRequest.CreateHttp(uri);
             webRequest.Method = "GET";
@@ -56,6 +56,14 @@ namespace Mystat
             {
                return obj = Newtonsoft.Json.JsonConvert.DeserializeObject<T>((string)reader.ReadToEnd());
             }
+        }
+
+        public void Refresh(ref Token token)
+        {
+            Refresh_Token refresh = new Refresh_Token();
+            refresh.refresh_token = token.refresh_token;
+            File.WriteAllText("../../JsonFile/Refresh_Token.json", Newtonsoft.Json.JsonConvert.SerializeObject(refresh));
+            this.Authorization(new Uri("https://msapi.itstep.org/api/v1/auth/refresh"), ref token, "../../JsonFile/Refresh_Token.json");
         }
     }
 }

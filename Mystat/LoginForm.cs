@@ -17,11 +17,13 @@ namespace Mystat
         private Authentication Authentication;
         private Token Token;
         private MystatForm MystatForm;
+        private Mystat Mystat;
 
         public LoginForm()
         {
             Token = new Token();
             Authentication = new Authentication();
+            Mystat = new Mystat();
             InitializeComponent();
             
         }
