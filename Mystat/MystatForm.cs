@@ -24,6 +24,7 @@ namespace Mystat
         private List<Schedule> Todays;
         private string schedulURL = "https://msapi.itstep.org/api/v1/schedule/operations/get-month?date_filter=";
         private BindingList<Attendance> attendances;
+
         public MystatForm(Token token)
         {
             InitializeComponent();
@@ -239,6 +240,19 @@ namespace Mystat
                 leader_Streams.ElementAt(LeaderList.SelectedIndex).position.ToString(),
                 leader_Streams.ElementAt(LeaderList.SelectedIndex).id.ToString()).ShowDialog();
             }
+        }
+
+        private void progresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            this.Hide();
+            ProgressForm progressForm = new ProgressForm(Token);
+            progressForm.ShowDialog();
+            if (progressForm.DialogResult == DialogResult.Abort)
+            {
+                this.Show();
+            }
+            else this.Close();
         }
     }
 }

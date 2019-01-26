@@ -46,6 +46,8 @@
             this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.LeaderList = new System.Windows.Forms.ListBox();
+            this.LeaderLisetMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.leaderButton = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -76,15 +78,14 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.LeaderLisetMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.progresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Profile)).BeginInit();
             this.menuStrip.SuspendLayout();
+            this.LeaderLisetMenu.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Month)).BeginInit();
             this.panel4.SuspendLayout();
-            this.LeaderLisetMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -240,7 +241,8 @@
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mainToolStripMenuItem});
+            this.mainToolStripMenuItem,
+            this.progresToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(1280, 24);
@@ -279,6 +281,21 @@
             this.LeaderList.ScrollAlwaysVisible = true;
             this.LeaderList.Size = new System.Drawing.Size(281, 300);
             this.LeaderList.TabIndex = 3;
+            // 
+            // LeaderLisetMenu
+            // 
+            this.LeaderLisetMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewToolStripMenuItem});
+            this.LeaderLisetMenu.Name = "LeaderLisetMenu";
+            this.LeaderLisetMenu.Size = new System.Drawing.Size(100, 26);
+            this.LeaderLisetMenu.Opening += new System.ComponentModel.CancelEventHandler(this.LeaderLisetMenu_Opening);
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.viewToolStripMenuItem.Text = "View";
+            this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
             // 
             // leaderButton
             // 
@@ -581,20 +598,12 @@
             this.label12.TabIndex = 15;
             this.label12.Text = "Homework";
             // 
-            // LeaderLisetMenu
+            // progresToolStripMenuItem
             // 
-            this.LeaderLisetMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.viewToolStripMenuItem});
-            this.LeaderLisetMenu.Name = "LeaderLisetMenu";
-            this.LeaderLisetMenu.Size = new System.Drawing.Size(181, 48);
-            this.LeaderLisetMenu.Opening += new System.ComponentModel.CancelEventHandler(this.LeaderLisetMenu_Opening);
-            // 
-            // viewToolStripMenuItem
-            // 
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.viewToolStripMenuItem.Text = "View";
-            this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
+            this.progresToolStripMenuItem.Name = "progresToolStripMenuItem";
+            this.progresToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.progresToolStripMenuItem.Text = "Progres";
+            this.progresToolStripMenuItem.Click += new System.EventHandler(this.progresToolStripMenuItem_Click);
             // 
             // MystatForm
             // 
@@ -629,12 +638,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.Profile)).EndInit();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.LeaderLisetMenu.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Month)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.LeaderLisetMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -690,5 +699,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ContextMenuStrip LeaderLisetMenu;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem progresToolStripMenuItem;
     }
 }
