@@ -25,3 +25,4 @@ D:\New folder\Mystat.org\Mystat\obj\Debug\Mystat.pdb
 D:\New folder\Mystat.org\Mystat\obj\Debug\Mystat.ProfileViewFrom.resources
 D:\New folder\Mystat.org\Mystat\obj\Debug\Mystat.csprojAssemblyReference.cache
 D:\New folder\Mystat.org\Mystat\obj\Debug\Mystat.ProgressForm.resources
+D:\New folder\Mystat.org\Mystat\bin\Debug\Newtonsoft.Json.dll

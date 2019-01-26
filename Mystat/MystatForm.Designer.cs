@@ -44,6 +44,8 @@
             this.Profile = new System.Windows.Forms.PictureBox();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.progresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.homeworkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.LeaderList = new System.Windows.Forms.ListBox();
             this.LeaderLisetMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -78,7 +80,8 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.progresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.studyMaterialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lessionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Profile)).BeginInit();
             this.menuStrip.SuspendLayout();
@@ -242,7 +245,9 @@
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mainToolStripMenuItem,
-            this.progresToolStripMenuItem});
+            this.progresToolStripMenuItem,
+            this.homeworkToolStripMenuItem,
+            this.studyMaterialToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(1280, 24);
@@ -256,6 +261,20 @@
             this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
             this.mainToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.mainToolStripMenuItem.Text = "Main";
+            // 
+            // progresToolStripMenuItem
+            // 
+            this.progresToolStripMenuItem.Name = "progresToolStripMenuItem";
+            this.progresToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.progresToolStripMenuItem.Text = "Progress";
+            this.progresToolStripMenuItem.Click += new System.EventHandler(this.progresToolStripMenuItem_Click);
+            // 
+            // homeworkToolStripMenuItem
+            // 
+            this.homeworkToolStripMenuItem.Name = "homeworkToolStripMenuItem";
+            this.homeworkToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
+            this.homeworkToolStripMenuItem.Text = "Homework";
+            this.homeworkToolStripMenuItem.Click += new System.EventHandler(this.homeworkToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -598,12 +617,19 @@
             this.label12.TabIndex = 15;
             this.label12.Text = "Homework";
             // 
-            // progresToolStripMenuItem
+            // studyMaterialToolStripMenuItem
             // 
-            this.progresToolStripMenuItem.Name = "progresToolStripMenuItem";
-            this.progresToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.progresToolStripMenuItem.Text = "Progres";
-            this.progresToolStripMenuItem.Click += new System.EventHandler(this.progresToolStripMenuItem_Click);
+            this.studyMaterialToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lessionToolStripMenuItem});
+            this.studyMaterialToolStripMenuItem.Name = "studyMaterialToolStripMenuItem";
+            this.studyMaterialToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.studyMaterialToolStripMenuItem.Text = "Study Material";
+            // 
+            // lessionToolStripMenuItem
+            // 
+            this.lessionToolStripMenuItem.Name = "lessionToolStripMenuItem";
+            this.lessionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lessionToolStripMenuItem.Text = "Lession";
             // 
             // MystatForm
             // 
@@ -700,5 +726,8 @@
         private System.Windows.Forms.ContextMenuStrip LeaderLisetMenu;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem progresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem homeworkToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem studyMaterialToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lessionToolStripMenuItem;
     }
 }

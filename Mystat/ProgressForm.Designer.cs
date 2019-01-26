@@ -44,6 +44,7 @@
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.homeworkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,7 +87,8 @@
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mainToolStripMenuItem,
-            this.progressToolStripMenuItem});
+            this.progressToolStripMenuItem,
+            this.homeworkToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(799, 24);
@@ -159,6 +161,13 @@
             this.columnHeader9.Text = "Lession Name";
             this.columnHeader9.Width = 100;
             // 
+            // homeworkToolStripMenuItem
+            // 
+            this.homeworkToolStripMenuItem.Name = "homeworkToolStripMenuItem";
+            this.homeworkToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
+            this.homeworkToolStripMenuItem.Text = "Homework";
+            this.homeworkToolStripMenuItem.Click += new System.EventHandler(this.homeworkToolStripMenuItem_Click);
+            // 
             // ProgressForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -197,5 +206,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ToolStripMenuItem homeworkToolStripMenuItem;
     }
 }

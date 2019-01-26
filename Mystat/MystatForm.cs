@@ -210,11 +210,7 @@ namespace Mystat
         private void MystatForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Properties.Settings.Default.Save();
-            using (Refresh_Token refresh_Token = new Refresh_Token())
-            {
-                refresh_Token.refresh_token = Token.refresh_token;
-                File.WriteAllText("../../JsonFile/Refresh_Token.json", Newtonsoft.Json.JsonConvert.SerializeObject(Token));
-            }
+            File.WriteAllText("../../JsonFile/Token.txt", Mystat.Encrypt(Newtonsoft.Json.JsonConvert.SerializeObject(Token)));
         }
 
         private void LeaderLisetMenu_Opening(object sender, CancelEventArgs e)
@@ -255,6 +251,11 @@ namespace Mystat
                 this.Show();
             }
             else this.Close();
+        }
+
+        private void homeworkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Comming Soon!");
         }
     }
 }

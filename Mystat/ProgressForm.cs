@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using TK = Mystat.JsonObj;
 using Mystat.ProgressJsonObj;
 using System.Threading;
+using System.IO;
 
 namespace Mystat
 {
@@ -47,7 +48,7 @@ namespace Mystat
                 }
                 catch (System.Net.WebException)
                 {
-                    Mystat.Authorization(new Uri("https://msapi.itstep.org/api/v1/auth/refresh"), ref Token, "../../JsonFile/Refresh_Token.json");
+                    Mystat.Authorization(new Uri("https://msapi.itstep.org/api/v1/auth/login"), ref Token, Encoding.UTF8.GetBytes(Mystat.Decrypt(File.ReadAllText("../../JsonFile/Auth.txt"))));
                 }
             }
         }
@@ -110,6 +111,11 @@ namespace Mystat
         {
             listView2.Items.Clear();
             ThreadPool.QueueUserWorkItem(LoadStudent_Visit, subject_Histories.ElementAt(comboBox1.SelectedIndex).id);
+        }
+
+        private void homeworkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Comming Soon!");
         }
     }
 }
