@@ -18,6 +18,8 @@ namespace Mystat
         private TK.Token Token;
         private List<Student_Exam> student_Exams;
         private Mystat Mystat;
+        private BindingList<Subject_History> subject_Histories;
+        private List<Student_Visit> student_Visits;
 
         public ProgressForm(TK.Token token)
         {
@@ -29,6 +31,9 @@ namespace Mystat
         private async void ProgressForm_LoadAsync(object sender, EventArgs e)
         {
             student_Exams = new List<Student_Exam>();
+            subject_Histories = new BindingList<Subject_History>();
+            student_Visits = new List<Student_Visit>();
+
             try
             {
                 await LoadDataAsync();
@@ -53,6 +58,33 @@ namespace Mystat
                     student_Exams);
 
             ThreadPool.QueueUserWorkItem(LoadStudent_Exam);
+
+            subject_Histories = await Mystat.GetJson<BindingList<Subject_History>>(Token, new Uri("https://msapi.itstep.org/api/v1/settings/history-specs"),
+                subject_Histories);
+            comboBox1.DataSource = subject_Histories;
+
+            student_Visits = await Mystat.GetJson<List<Student_Visit>>(Token, new Uri("https://msapi.itstep.org/api/v1/progress/operations/student-visits"),
+                student_Visits);
+            ThreadPool.QueueUserWorkItem(LoadStudent_Visit, subject_Histories.ElementAt(0).id);
+        }
+
+        private void LoadStudent_Visit(object obj)
+        {
+            object ID = obj;
+            int SubjectID = Convert.ToInt32(ID);
+            string[] str = new string[5];
+            foreach (var item in student_Visits)
+            {
+                if(item.spec_id == SubjectID)
+                {
+                    str[0] = item.date_visit;
+                    str[1] = item.lesson_number.ToString();
+                    str[2] = item.ToString();
+                    str[3] = item.teacher_name;
+                    str[4] = item.lesson_theme;
+                    this.Invoke(new Action(() => listView2.Items.Add(new ListViewItem(str))));
+                }
+            }
         }
 
         private void LoadStudent_Exam(object obj)
@@ -72,6 +104,12 @@ namespace Mystat
         {
             this.DialogResult = DialogResult.Abort;
             this.Close();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listView2.Items.Clear();
+            ThreadPool.QueueUserWorkItem(LoadStudent_Visit, subject_Histories.ElementAt(comboBox1.SelectedIndex).id);
         }
     }
 }
