@@ -29,7 +29,14 @@ namespace Mystat
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            Token = Newtonsoft.Json.JsonConvert.DeserializeObject<Token>(Mystat.Decrypt(File.ReadAllText("../../JsonFile/Token.txt")));
+            try
+            {
+                Token = Newtonsoft.Json.JsonConvert.DeserializeObject<Token>(Mystat.Decrypt(File.ReadAllText("../../JsonFile/Token.txt")));
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageBox.Show("Token File Not Found", ex.FileName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             try
             {
                 Mystat.Refresh(ref Token);
@@ -38,7 +45,7 @@ namespace Mystat
                 if (MystatForm.DialogResult == DialogResult.OK)
                 {
                     pictureBox1.BackColor = Color.Transparent;
-                    Authentication = Newtonsoft.Json.JsonConvert.DeserializeObject<Authentication>(Mystat.Decrypt(File.ReadAllText("../../JsonFile/Auth.txt")));
+                    LoadAuth();
                     Login.Text = Authentication.username;
                     Passworld.Text = Authentication.password;
                 }
@@ -46,7 +53,7 @@ namespace Mystat
             }
             catch (System.Net.WebException)
             {
-                Authentication = Newtonsoft.Json.JsonConvert.DeserializeObject<Authentication>(Mystat.Decrypt(File.ReadAllText("../../JsonFile/Auth.txt")));
+                LoadAuth();
                 try
                 {
                     Mystat.Authorization(new Uri("https://msapi.itstep.org/api/v1/auth/login"), ref Token, Encoding.UTF8.GetBytes(Newtonsoft.Json.JsonConvert.SerializeObject(Authentication)));
@@ -55,7 +62,7 @@ namespace Mystat
                     if (MystatForm.DialogResult == DialogResult.OK)
                     {
                         pictureBox1.BackColor = Color.Transparent;
-                        Authentication = Newtonsoft.Json.JsonConvert.DeserializeObject<Authentication>(Mystat.Decrypt(File.ReadAllText("../../JsonFile/Auth.txt")));
+                        LoadAuth();
                         Login.Text = Authentication.username;
                         Passworld.Text = Authentication.password;
                     }
@@ -64,11 +71,32 @@ namespace Mystat
                 catch (System.Net.WebException)
                 {
                     pictureBox1.BackColor = Color.Transparent;
-                    Authentication = Newtonsoft.Json.JsonConvert.DeserializeObject<Authentication>(Mystat.Decrypt(File.ReadAllText("../../JsonFile/Auth.txt")));
+                    LoadAuth();
                     Login.Text = Authentication.username;
                     Passworld.Text = Authentication.password;
                 }
             }        
+        }
+
+        private void LoadAuth()
+        {
+            try
+            {
+                Authentication = Newtonsoft.Json.JsonConvert.DeserializeObject<Authentication>(Mystat.Decrypt(File.ReadAllText("../../JsonFile/AuthUser.txt")));
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                try
+                {
+                    Authentication = Newtonsoft.Json.JsonConvert.DeserializeObject<Authentication>(Mystat.Decrypt(File.ReadAllText("../../JsonFile/Auth.txt")));
+                }
+                catch (FileNotFoundException ex1)
+                {
+                    MessageBox.Show("Reinstall to get system file!", $"System File name {ex1.FileName} Not Found!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -78,7 +106,7 @@ namespace Mystat
             try
             {
                 Mystat.Authorization(new Uri("https://msapi.itstep.org/api/v1/auth/login"), ref Token, Encoding.UTF8.GetBytes(Newtonsoft.Json.JsonConvert.SerializeObject(Authentication)));
-                File.WriteAllText("../../JsonFile/Auth.txt", Mystat.Encrypt(Newtonsoft.Json.JsonConvert.SerializeObject(Authentication)));
+                File.WriteAllText("../../JsonFile/AuthUser.txt", Mystat.Encrypt(Newtonsoft.Json.JsonConvert.SerializeObject(Authentication)));
                 this.Hide();
                 MystatForm = new MystatForm(Token);
                 MystatForm.ShowDialog();

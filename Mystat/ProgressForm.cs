@@ -48,7 +48,7 @@ namespace Mystat
                 }
                 catch (System.Net.WebException)
                 {
-                    Mystat.Authorization(new Uri("https://msapi.itstep.org/api/v1/auth/login"), ref Token, Encoding.UTF8.GetBytes(Mystat.Decrypt(File.ReadAllText("../../JsonFile/Auth.txt"))));
+                    Mystat.Authorization(new Uri("https://msapi.itstep.org/api/v1/auth/login"), ref Token, Encoding.UTF8.GetBytes(Mystat.Decrypt(File.ReadAllText("../../JsonFile/AuthUser.txt"))));
                 }
             }
         }
