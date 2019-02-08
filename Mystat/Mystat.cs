@@ -84,10 +84,9 @@ namespace Mystat
         /// <returns></returns>
         public static string Decrypt(string input)
         {
-            string key = "hello-hihi-what1";
             byte[] inputArray = Convert.FromBase64String(input);
             TripleDESCryptoServiceProvider tripleDES = new TripleDESCryptoServiceProvider();
-            tripleDES.Key = UTF8Encoding.UTF8.GetBytes(key);
+            tripleDES.Key = UTF8Encoding.UTF8.GetBytes("hello-hihi-what1");
             tripleDES.Mode = CipherMode.ECB;
             tripleDES.Padding = PaddingMode.PKCS7;
             ICryptoTransform cTransform = tripleDES.CreateDecryptor();
@@ -103,10 +102,9 @@ namespace Mystat
         /// <returns></returns>
         public static string Encrypt(string input)
         {
-            string key = "hello-hihi-what1";
             byte[] inputArray = UTF8Encoding.UTF8.GetBytes(input);
             TripleDESCryptoServiceProvider tripleDES = new TripleDESCryptoServiceProvider();
-            tripleDES.Key = UTF8Encoding.UTF8.GetBytes(key);
+            tripleDES.Key = UTF8Encoding.UTF8.GetBytes("hello-hihi-what1");
             tripleDES.Mode = CipherMode.ECB;
             tripleDES.Padding = PaddingMode.PKCS7;
             ICryptoTransform cTransform = tripleDES.CreateEncryptor();

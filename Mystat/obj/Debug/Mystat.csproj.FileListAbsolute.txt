@@ -26,3 +26,17 @@ D:\New folder\Mystat.org\Mystat\obj\Debug\Mystat.ProfileViewFrom.resources
 D:\New folder\Mystat.org\Mystat\obj\Debug\Mystat.csprojAssemblyReference.cache
 D:\New folder\Mystat.org\Mystat\obj\Debug\Mystat.ProgressForm.resources
 D:\New folder\Mystat.org\Mystat\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Student0012\Source\Repos\Mystat.org\Mystat\bin\Debug\Mystat.exe.config
+C:\Users\Student0012\Source\Repos\Mystat.org\Mystat\bin\Debug\Mystat.exe
+C:\Users\Student0012\Source\Repos\Mystat.org\Mystat\bin\Debug\Mystat.pdb
+C:\Users\Student0012\Source\Repos\Mystat.org\Mystat\obj\Debug\Mystat.csprojAssemblyReference.cache
+C:\Users\Student0012\Source\Repos\Mystat.org\Mystat\obj\Debug\Mystat.LoginForm.resources
+C:\Users\Student0012\Source\Repos\Mystat.org\Mystat\obj\Debug\Mystat.MystatForm.resources
+C:\Users\Student0012\Source\Repos\Mystat.org\Mystat\obj\Debug\Mystat.ProfileViewFrom.resources
+C:\Users\Student0012\Source\Repos\Mystat.org\Mystat\obj\Debug\Mystat.ProgressForm.resources
+C:\Users\Student0012\Source\Repos\Mystat.org\Mystat\obj\Debug\Mystat.Properties.Resources.resources
+C:\Users\Student0012\Source\Repos\Mystat.org\Mystat\obj\Debug\Mystat.csproj.GenerateResource.cache
+C:\Users\Student0012\Source\Repos\Mystat.org\Mystat\obj\Debug\Mystat.csproj.CoreCompileInputs.cache
+C:\Users\Student0012\Source\Repos\Mystat.org\Mystat\obj\Debug\Mystat.csproj.CopyComplete
+C:\Users\Student0012\Source\Repos\Mystat.org\Mystat\obj\Debug\Mystat.exe
+C:\Users\Student0012\Source\Repos\Mystat.org\Mystat\obj\Debug\Mystat.pdb

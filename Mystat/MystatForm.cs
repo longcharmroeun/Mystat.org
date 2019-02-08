@@ -86,7 +86,7 @@ namespace Mystat
             string[] str = new string[7];
             foreach (var item in schedules)
             {
-                if (item.date == $"{DateTime.Now.Year.ToString("D4")}-{DateTime.Now.Month.ToString("D2")}-{DateTime.Now.Date.ToString("D2")}") 
+                if (item.date == $"{DateTime.Now.Year.ToString("d4")}-{DateTime.Now.Month.ToString("d2")}-{DateTime.Now.Day.ToString("d2")}") 
                 {
                     Todays.Add(item);
                     if (Counter == 0)
