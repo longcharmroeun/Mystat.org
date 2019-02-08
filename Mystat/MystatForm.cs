@@ -117,6 +117,10 @@ namespace Mystat
             {
                 this.Invoke(new Action(() => noclassLabel.Text = "No class"));
             }
+            else
+            {
+                this.Invoke(new Action(() => noclassLabel.Text = $"{DateTime.Now.Year.ToString("d4")}-{DateTime.Now.Month.ToString("d2")}-{DateTime.Now.Day.ToString("d2")}"));
+            }
         }
 
         private void LoadUser(object obj)
